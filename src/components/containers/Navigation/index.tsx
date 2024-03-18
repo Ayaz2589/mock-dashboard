@@ -19,7 +19,7 @@ const Navigation = () => {
           ))}
         </div>
       </div>
-      <Button navigationItem onClick={() => {}} type="navigation-item">
+      <Button onClick={() => {}} type="navigation-item">
         Log Out
       </Button>
     </div>

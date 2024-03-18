@@ -45,7 +45,10 @@ const Button = ({ onClick, children, type = "default" }: Props) => {
         );
       case "drop-down":
         return (
-          <div className="bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center">
+          <div
+            className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center"
+            onClick={onClick}
+          >
             {children}
             <span>{downArrow}</span>
           </div>
@@ -53,7 +56,7 @@ const Button = ({ onClick, children, type = "default" }: Props) => {
       case "drop-down-item":
         console.log(children);
         return (
-          <div className="bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5">
+          <div className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5">
             {children}
           </div>
         );
