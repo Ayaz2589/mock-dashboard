@@ -1,6 +1,5 @@
-import { SplitScreen } from "../../";
+import { SplitScreen, Navigation } from "../../";
 
-const ScreenLeft = () => <div>ScreenLeft</div>;
 const ScreenRight = () => <div>ScreenRight</div>;
 
 const splitScreenProps = {
@@ -13,7 +12,7 @@ const Dashboard = () => {
   return (
     <div className="App">
       <SplitScreen {...splitScreenProps}>
-        <ScreenLeft />
+        <Navigation />
         <ScreenRight />
       </SplitScreen>
     </div>
