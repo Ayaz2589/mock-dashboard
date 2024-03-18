@@ -24,34 +24,52 @@ const downArrow = (
 
 type Props = {
   onClick?: () => void;
-  navigationItem?: boolean;
-  dropDown?: boolean;
+  type?: "drop-down" | "drop-down-item" | "default" | "navigation-item";
   children: React.ReactNode;
 };
 
-const Button = ({
-  onClick,
-  children,
-  navigationItem = false,
-  dropDown = false,
-}: Props) => {
-  const defaultRender = () => <>{children}</>;
+const Button = ({ onClick, children, type = "default" }: Props) => {
+  const renderButtonType = (type: string) => {
+    switch (type) {
+      case "navigation-item":
+        return (
+          <button onClick={onClick} className={navigationItemStyles}>
+            {children}
+          </button>
+        );
+      case "default":
+        return (
+          <button onClick={onClick} className={defaultStyles}>
+            {children}
+          </button>
+        );
+      case "drop-down":
+        return (
+          <div className="bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center">
+            {children}
+            <span>{downArrow}</span>
+          </div>
+        );
+      case "drop-down-item":
+        console.log(children);
+        return (
+          <div className="bg-gray-50 hover:bg-gray-200 text-gray-500 font-bold px-4 w-full text-sm rounded-lg p-2.5">
+            {children}
+          </div>
+        );
+      default:
+        return (
+          <button
+            onClick={onClick}
+            className="bg-gray-50 hover:bg-gray-200 text-white font-bold px-4 w-full text-sm rounded-lg p-2.5"
+          >
+            {children}
+          </button>
+        );
+    }
+  };
 
-  const dropDownRender = () => (
-    <div className="flex items-center justify-between">
-      {children}
-      <span>{downArrow}</span>
-    </div>
-  );
-
-  return (
-    <button
-      onClick={onClick}
-      className={navigationItem ? navigationItemStyles : defaultStyles}
-    >
-      {dropDown ? dropDownRender() : defaultRender()}
-    </button>
-  );
+  return renderButtonType(type);
 };
 
 export default Button;

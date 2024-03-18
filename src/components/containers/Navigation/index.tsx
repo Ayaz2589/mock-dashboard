@@ -13,13 +13,13 @@ const Navigation = () => {
         </div>
         <div className="flex flex-col">
           {navItems.map((item) => (
-            <Button navigationItem onClick={() => {}}>
+            <Button type="navigation-item" onClick={() => {}}>
               {item}
             </Button>
           ))}
         </div>
       </div>
-      <Button navigationItem onClick={() => {}}>
+      <Button navigationItem onClick={() => {}} type="navigation-item">
         Log Out
       </Button>
     </div>
