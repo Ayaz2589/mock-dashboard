@@ -10,6 +10,10 @@ type Props = {
 const ControlledFlow = ({ children, onDone, currentIndex, onNext }: Props) => {
   const currentChild = React.Children.toArray(children)[currentIndex];
 
+  if (currentIndex === React.Children.count(children)) {
+    onDone();
+  }
+
   const childProps = {
     onNext,
   };

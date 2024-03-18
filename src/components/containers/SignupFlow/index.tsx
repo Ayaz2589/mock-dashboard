@@ -31,16 +31,21 @@ const StepThree = ({ onNext }: any) => {
 const SignupFlow = () => {
   const [data, setData] = useState({});
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [isDone, setDone] = useState(false);
 
   const onNext = (dataFromStep: any) => {
     setData({ ...data, ...dataFromStep });
     setCurrentStepIndex(currentStepIndex + 1);
   };
 
+  if (isDone) {
+    return <div>DONE!</div>;
+  }
+
   return (
     <ControlledFlow
       currentIndex={currentStepIndex}
-      onDone={() => {}}
+      onDone={() => setDone(true)}
       onNext={onNext}
     >
       <StepOne />
