@@ -1,21 +1,15 @@
-import { SplitScreen } from "../../";
+import { Button } from "../../";
 
-const ScreenLeft = () => <div>ScreenLeft</div>;
-const ScreenRight = () => <div>ScreenRight</div>;
-
-const splitScreenProps = {
-  leftStyles:
-    "hidden md:flex md:flex-1 bg-slate-400 min-w-[5rem] max-w-[15rem]",
-  rightStyles: "flex-1 bg-slate-500",
-};
+const navItems = ["Metrics", "Users", "Settings"];
 
 const Navigation = () => {
   return (
-    <div className="App">
-      <SplitScreen {...splitScreenProps}>
-        <ScreenLeft />
-        <ScreenRight />
-      </SplitScreen>
+    <div className="flex flex-col w-full">
+      {navItems.map((item) => (
+        <Button styles="hover:bg-slate-300 bg-slate-200 h-[4rem] border-b-2 border-slate-50">
+          {item}
+        </Button>
+      ))}
     </div>
   );
 };
