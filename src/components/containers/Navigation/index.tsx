@@ -1,4 +1,4 @@
-import { SplitScreen, Navigation } from "../../";
+import { SplitScreen } from "../../";
 
 const ScreenLeft = () => <div>ScreenLeft</div>;
 const ScreenRight = () => <div>ScreenRight</div>;
@@ -9,7 +9,7 @@ const splitScreenProps = {
   rightStyles: "flex-1 bg-slate-500",
 };
 
-const Dashboard = () => {
+const Navigation = () => {
   return (
     <div className="App">
       <SplitScreen {...splitScreenProps}>
@@ -20,4 +20,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Navigation;
