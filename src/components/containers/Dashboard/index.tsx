@@ -5,6 +5,8 @@ import {
   Dropdown,
   Card,
   CardHeader,
+  CardContent,
+  CardFooter,
 } from "../../";
 
 const Dashboard = () => {
@@ -23,7 +25,11 @@ const Dashboard = () => {
         <Input placeholder="First Name" />
         <Dropdown options={options} handleSelection={handleSelection} />
         <Card>
-          <CardHeader>Title</CardHeader>
+          <CardHeader>Header</CardHeader>
+          <CardContent>
+            <Input placeholder="First Name" />
+          </CardContent>
+          <CardFooter>Footer</CardFooter>
         </Card>
       </div>
     </SplitScreen>
