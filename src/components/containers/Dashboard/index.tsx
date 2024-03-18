@@ -1,4 +1,11 @@
-import { SplitScreen, Navigation, Input, Dropdown } from "../../";
+import {
+  SplitScreen,
+  Navigation,
+  Input,
+  Dropdown,
+  Card,
+  CardHeader,
+} from "../../";
 
 const Dashboard = () => {
   const options = [
@@ -12,9 +19,12 @@ const Dashboard = () => {
   return (
     <SplitScreen dashboard>
       <Navigation />
-      <div className="w-1/3">
+      <div className="w-1/2 flex flex-col gap-5 p-2">
         <Input placeholder="First Name" />
         <Dropdown options={options} handleSelection={handleSelection} />
+        <Card>
+          <CardHeader>Title</CardHeader>
+        </Card>
       </div>
     </SplitScreen>
   );
