@@ -2,7 +2,7 @@ const defaultStyles =
   "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
 
 const navigationItemStyles =
-  "hover:bg-slate-300 bg-slate-200 h-[4rem] border-b-2 border-slate-50 text-left px-10";
+  "hover:bg-slate-500 bg-slate-600 h-[4rem] text-left px-10 text-slate-300";
 
 type Props = {
   onClick: () => void;
