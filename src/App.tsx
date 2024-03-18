@@ -1,21 +1,9 @@
-import { SplitScreen } from "./components";
-
-const ScreenLeft = () => <div>ScreenLeft</div>;
-const ScreenRight = () => <div>ScreenRight</div>;
-
-const splitScreenProps = {
-  leftStyles:
-    "hidden md:flex md:flex-1 bg-slate-400 min-w-[5rem] max-w-[15rem]",
-  rightStyles: "flex-1 bg-slate-500",
-};
+import { Dashboard } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <SplitScreen {...splitScreenProps}>
-        <ScreenLeft />
-        <ScreenRight />
-      </SplitScreen>
+      <Dashboard />
     </div>
   );
 }
