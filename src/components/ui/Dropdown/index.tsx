@@ -1,11 +1,16 @@
 import { useState, useRef } from "react";
 import { Button } from "../..";
+import { useOutsideClick } from "../../../hooks";
 
 const Dropdown = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggle = () => setOpen(!open);
+
+  useOutsideClick(dropdownRef, () => {
+    if (open) setOpen(false);
+  });
 
   return (
     <div ref={dropdownRef}>
