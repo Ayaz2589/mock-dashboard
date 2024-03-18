@@ -1,12 +1,12 @@
-import { SplitScreen, Navigation } from "../../";
-
-const ScreenRight = () => <div>ScreenRight</div>;
+import { SplitScreen, Navigation, Input } from "../../";
 
 const Dashboard = () => {
   return (
     <SplitScreen dashboard>
       <Navigation />
-      <ScreenRight />
+      <div className="w-1/3">
+        <Input placeholder="First Name" />
+      </div>
     </SplitScreen>
   );
 };
