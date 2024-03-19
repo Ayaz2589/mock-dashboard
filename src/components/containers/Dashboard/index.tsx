@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardContent,
   CardFooter,
-  Button,
+  Toggle,
 } from "../../";
 import { useState } from "react";
 
@@ -43,6 +43,7 @@ const Dashboard = () => {
               handleSelection={handleSelection}
               error={error}
             />
+            <Toggle title="test" checked onClick={(e) => console.log(e.target.value)} />
           </CardContent>
           <CardFooter>Footer</CardFooter>
         </Card>
