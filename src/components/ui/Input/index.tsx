@@ -8,7 +8,6 @@ type Props = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   error: string;
-  [key: string]: any;
 };
 
 const Input = ({

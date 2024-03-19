@@ -1,7 +1,12 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const Card = ({ children, className }: any) => {
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const Card = ({ children, className }: Props) => {
   const headerElement = React.Children.toArray(children).find(
     (child) => React.isValidElement(child) && child.type === CardHeader
   );

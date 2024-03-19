@@ -43,7 +43,14 @@ const Dashboard = () => {
               handleSelection={handleSelection}
               error={error}
             />
-            <Toggle title="test" checked onClick={(e) => console.log(e.target.value)} />
+            <Toggle
+              title="test"
+              checked
+              onClick={(e) => {
+                const value = (e.target as HTMLInputElement).value;
+                console.log(value);
+              }}
+            />
           </CardContent>
           <CardFooter>Footer</CardFooter>
         </Card>

@@ -1,7 +1,7 @@
 type Props = {
   title: string;
   checked: boolean;
-  onClick: (e: any) => void;
+  onClick: (e: React.MouseEvent<HTMLInputElement>) => void;
 };
 
 const Toggle = ({ title, checked, onClick }: Props) => {
