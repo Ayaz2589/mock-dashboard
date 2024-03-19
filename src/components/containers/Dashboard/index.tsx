@@ -13,6 +13,7 @@ import { useState } from "react";
 
 const Dashboard = () => {
   const [value, setValue] = useState("");
+  const [error, setError] = useState("Invaild first name");
 
   const options = [
     { value: "option1", label: "Option 1" },
@@ -22,7 +23,7 @@ const Dashboard = () => {
 
   const handleSelection = (option: any) => console.log(option);
 
-  const handleOnChange = (e: any) => console.log(e.target.value);
+  const handleOnChange = (e: any) => setValue(e.target.value);
 
   return (
     <SplitScreen dashboard>
@@ -35,6 +36,7 @@ const Dashboard = () => {
               placeholder="First Name"
               onChange={handleOnChange}
               value={value}
+              error={error}
             />
             <Dropdown options={options} handleSelection={handleSelection} />
           </CardContent>
