@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { SplitScreen, Navigation } from "../../";
+import { SplitScreen, Navigation, Container } from "../../";
 
 const Dashboard = () => {
   return (
     <SplitScreen dashboard>
       <Navigation />
-      <Outlet />
+      <Container>
+        <Outlet />
+      </Container>
     </SplitScreen>
   );
 };

@@ -25,7 +25,7 @@ const Metrics = () => {
 
   const handleOnChange = (e: any) => setValue(e.target.value);
   return (
-    <div className="flex flex-col gap-5 p-5">
+    <div className="flex flex-col gap-5">
       <Header title="Metrics" />
       <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
         <CardHeader>Header</CardHeader>
