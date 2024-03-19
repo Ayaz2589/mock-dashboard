@@ -21,3 +21,5 @@ export { default as CardFooter } from "./ui/Card/CardFooter"
 export { default as Toggle } from "./ui/Toggle"
 export { default as Spinner } from "./ui/Spinner"
 export { default as Header } from "./ui/Header"
+export { default as Container } from "./ui/Container"
+
