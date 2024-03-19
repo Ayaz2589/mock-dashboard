@@ -10,9 +10,10 @@ type Option = {
 type Props = {
   handleSelection: (option: any) => void;
   options: Option[];
+  error: string;
 };
 
-const Dropdown = ({ options, handleSelection }: Props) => {
+const Dropdown = ({ options, handleSelection, error }: Props) => {
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -34,7 +35,7 @@ const Dropdown = ({ options, handleSelection }: Props) => {
   };
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="relative my-2">
       <Button type="drop-down" onClick={toggle}>
         {selectedOption ? selectedOption.label : "Please make a selection"}
       </Button>
@@ -51,6 +52,9 @@ const Dropdown = ({ options, handleSelection }: Props) => {
           ))}
         </div>
       ) : null}
+      <div className="min-h-[1.75rem]">
+        {error && <p className="p-1 text-sm text-red-500">{error}</p>}
+      </div>
     </div>
   );
 };

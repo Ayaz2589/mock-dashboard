@@ -13,7 +13,7 @@ import { useState } from "react";
 
 const Dashboard = () => {
   const [value, setValue] = useState("");
-  const [error, setError] = useState("Invaild first name");
+  const [error, setError] = useState("");
 
   const options = [
     { value: "option1", label: "Option 1" },
@@ -38,7 +38,11 @@ const Dashboard = () => {
               value={value}
               error={error}
             />
-            <Dropdown options={options} handleSelection={handleSelection} />
+            <Dropdown
+              options={options}
+              handleSelection={handleSelection}
+              error={error}
+            />
           </CardContent>
           <CardFooter>Footer</CardFooter>
         </Card>
