@@ -1,5 +1,11 @@
+import { Header } from "../..";
+
 const Users = () => {
-  return <div>Users</div>;
+  return (
+    <div>
+      <Header title="Users" />
+    </div>
+  );
 };
 
 export default Users;
