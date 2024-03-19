@@ -6,9 +6,8 @@ const defaultStyles = {
 };
 
 const dashboardStyles = {
-  leftStyles:
-    "hidden md:flex md:flex-1 bg-slate-400 min-w-[5rem] max-w-[15rem]",
-  rightStyles: "flex-1 bg-slate-500",
+  leftStyles: "hidden md:flex md:flex-1 min-w-[5rem] max-w-[15rem]",
+  rightStyles: "flex-1 bg-gray-300",
 };
 
 type Props = {
@@ -21,7 +20,7 @@ type Props = {
 const SplitScreen = ({ children, dashboard = false }: Props) => {
   const [left, right] = React.Children.toArray(children);
   return (
-    <div className="flex h-screen bg-slate-200">
+    <div className="flex h-screen">
       <div
         className={
           dashboard ? dashboardStyles.leftStyles : defaultStyles.leftStyles

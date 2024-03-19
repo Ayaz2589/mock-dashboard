@@ -21,8 +21,8 @@ const Dashboard = () => {
   return (
     <SplitScreen dashboard>
       <Navigation />
-      <div className="w-1/2 flex flex-col gap-5 p-2">
-        <Card>
+      <div className="flex flex-col gap-5 p-5">
+        <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
           <CardHeader>Header</CardHeader>
           <CardContent>
             <Input placeholder="First Name" />
