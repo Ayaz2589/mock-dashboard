@@ -1,6 +1,13 @@
 export { default as SignupFlow } from "./containers/SignupFlow"
 export { default as Dashboard } from "./containers/Dashboard"
 export { default as Navigation } from "./containers/Navigation"
+export { default as Login } from "./containers/Login"
+export { default as Signup } from "./containers/Signup"
+export { default as ForgotPassword } from "./containers/ForgotPassword"
+export { default as Metrics } from "./containers/Metrics"
+export { default as Users } from "./containers/Users"
+export { default as Settings } from "./containers/Settings"
+export { default as NotFound } from "./containers/NotFound"
 
 export { default as ControlledFlow } from "./ui/ControlledFlow"
 export { default as Button } from "./ui/Button"
