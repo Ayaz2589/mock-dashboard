@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const defaultStyle =
   "bg-gray-50 border-2 text-gray-800 text-sm rounded-lg block w-full p-2.5 focus:outline-gray-300";
 
@@ -18,15 +20,26 @@ const Input = ({
   className,
   ...props
 }: Props) => {
+  const [error, setError] = useState({ value: false, message: "" });
+
+  console.log("input value: ", value)
+
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      className={defaultStyle}
-      {...props}
-    />
+    <div>
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={defaultStyle}
+        {...props}
+      />
+      <div className="min-h-[1.75rem]">
+        {error.value && (
+          <p className="p-1 text-sm text-red-500">{error.message}</p>
+        )}
+      </div>
+    </div>
   );
 };
 
