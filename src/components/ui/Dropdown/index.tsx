@@ -34,12 +34,12 @@ const Dropdown = ({ options, handleSelection }: Props) => {
   };
 
   return (
-    <div ref={dropdownRef}>
+    <div ref={dropdownRef} className="relative">
       <Button type="drop-down" onClick={toggle}>
         {selectedOption ? selectedOption.label : "Please make a selection"}
       </Button>
       {open ? (
-        <div className="p-1 bg-gray-50 rounded-lg mt-1">
+        <div className="p-1 bg-gray-50 rounded-lg mt-1 absolute w-full border-solid border-2 shadow-md">
           {options.map((option: Option, index: number) => (
             <Button
               type="drop-down-item"

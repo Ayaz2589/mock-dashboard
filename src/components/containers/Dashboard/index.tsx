@@ -22,12 +22,11 @@ const Dashboard = () => {
     <SplitScreen dashboard>
       <Navigation />
       <div className="w-1/2 flex flex-col gap-5 p-2">
-        <Input placeholder="First Name" />
-        <Dropdown options={options} handleSelection={handleSelection} />
         <Card>
           <CardHeader>Header</CardHeader>
           <CardContent>
             <Input placeholder="First Name" />
+            <Dropdown options={options} handleSelection={handleSelection} />
           </CardContent>
           <CardFooter>Footer</CardFooter>
         </Card>
