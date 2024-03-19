@@ -1,6 +1,7 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
-const Card = ({ children }: any) => {
+const Card = ({ children, className }: any) => {
   const headerElement = React.Children.toArray(children).find(
     (child) => React.isValidElement(child) && child.type === CardHeader
   );
@@ -15,7 +16,12 @@ const Card = ({ children }: any) => {
 
   if (headerElement && contentElement && footerElement) {
     return (
-      <div className="rounded-lg p-5 w-full bg-gray-50">
+      <div
+        className={twMerge(
+          "rounded-lg p-5 w-full bg-gray-50 shadow-sm",
+          className
+        )}
+      >
         <div>{headerElement}</div>
         <div>{contentElement}</div>
         <div>{footerElement}</div>
