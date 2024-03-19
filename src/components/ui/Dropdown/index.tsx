@@ -8,7 +8,7 @@ type Option = {
 };
 
 type Props = {
-  handleSelection: (option: any) => void;
+  handleSelection: (option: Option | null) => void;
   options: Option[];
   error: string;
 };
