@@ -46,7 +46,7 @@ const Button = ({ onClick, children, type = "default" }: Props) => {
       case "drop-down":
         return (
           <div
-            className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-500 px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center"
+            className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-800 px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center border-2"
             onClick={onClick}
           >
             {children}
