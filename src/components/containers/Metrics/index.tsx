@@ -7,6 +7,7 @@ import {
   CardContent,
   CardFooter,
   Toggle,
+  Spinner,
 } from "../../";
 
 const Metrics = () => {
@@ -43,9 +44,9 @@ const Metrics = () => {
             checked
             onClick={(e) => {
               const value = (e.target as HTMLInputElement).value;
-              console.log(value);
             }}
           />
+          <Spinner />
         </CardContent>
         <CardFooter>Footer</CardFooter>
       </Card>
