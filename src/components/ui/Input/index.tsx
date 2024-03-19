@@ -7,6 +7,7 @@ type Props = {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  error: string;
   [key: string]: any;
 };
 
@@ -16,17 +17,23 @@ const Input = ({
   value,
   onChange,
   className,
+  error,
   ...props
 }: Props) => {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      className={defaultStyle}
-      {...props}
-    />
+    <div className="my-2">
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={defaultStyle}
+        {...props}
+      />
+      <div className="min-h-[1.75rem]">
+        {error && <p className="p-1 text-sm text-red-500">{error}</p>}
+      </div>
+    </div>
   );
 };
 
