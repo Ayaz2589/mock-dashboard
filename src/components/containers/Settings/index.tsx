@@ -1,5 +1,11 @@
+import { PersonalInformationForm } from "../../";
+
 const Settings = () => {
-  return <div>Settings</div>;
+  return (
+    <div>
+      <PersonalInformationForm />
+    </div>
+  );
 };
 
 export default Settings;
