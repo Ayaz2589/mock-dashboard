@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Input, Card, CardHeader, CardContent, CardFooter } from "../..";
+import {
+  Input,
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  StatePicker,
+} from "../..";
 
 const PersonalInformationForm = () => {
   // State for each input field
@@ -43,6 +50,8 @@ const PersonalInformationForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             error={error}
           />
+          <StatePicker handleStateSelection={() => {}} error="" />
+
           <button
             type="submit"
             className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
