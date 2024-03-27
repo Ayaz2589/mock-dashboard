@@ -6,21 +6,17 @@ import {
   CardContent,
   CardFooter,
   StatePicker,
+  Avatar,
 } from "../..";
 
 const PersonalInformationForm = () => {
-  // State for each input field
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-
-  // Dummy error state for demonstration
   const [error, setError] = useState("");
 
-  // Example submit function
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement form submission logic here
     console.log({ firstName, lastName, email });
   };
 
@@ -28,6 +24,13 @@ const PersonalInformationForm = () => {
     <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
       <CardHeader>Personal Information</CardHeader>
       <CardContent>
+        <Avatar
+          src="https://example.com/path/to/your/avatar.jpg"
+          fallbackSrc="https://via.placeholder.com/150/CCCCCC/FFFFFF?text=+"
+          alt="User Name"
+          size={100}
+          onClick={() => {}}
+        />
         <form onSubmit={handleSubmit}>
           <Input
             type="text"

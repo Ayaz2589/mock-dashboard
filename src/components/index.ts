@@ -9,6 +9,7 @@ export { default as Users } from "./containers/Users"
 export { default as Settings } from "./containers/Settings"
 export { default as PersonalInformationForm } from "./containers/PersonalInformationForm"
 export { default as StatePicker } from "./containers/StatePicker"
+export { default as Avatar } from "./containers/Avatar"
 export { default as NotFound } from "./containers/NotFound"
 
 export { default as ControlledFlow } from "./ui/ControlledFlow"
