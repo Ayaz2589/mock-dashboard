@@ -7,7 +7,7 @@ const defaultStyles = {
 
 const dashboardStyles = {
   leftStyles: "hidden md:flex md:flex-1 min-w-[5rem] max-w-[15rem]",
-  rightStyles: "flex-1 bg-gray-300",
+  rightStyles: "flex-1",
 };
 
 type Props = {
