@@ -63,7 +63,7 @@ const PersonalInformationForm = () => {
           </button>
         </form>
       </CardContent>
-      <CardFooter>Fill in your details</CardFooter>
+      <CardFooter>Fill out the form</CardFooter>
     </Card>
   );
 };
