@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../";
+import { useNavigation } from "../../../hooks";
 
 const navItems = [
   { value: "Metrics", link: "/dashboard/metrics" },
@@ -10,6 +11,7 @@ const navItems = [
 const title = "Mock Dashboard";
 
 const Navigation = () => {
+  const { toggleDrawer } = useNavigation();
   const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-slate-600 justify-between flex flex-col">
@@ -19,7 +21,13 @@ const Navigation = () => {
         </div>
         <div className="flex flex-col">
           {navItems.map((item) => (
-            <Button type="navigation-item" onClick={() => navigate(item.link)}>
+            <Button
+              type="navigation-item"
+              onClick={() => {
+                navigate(item.link);
+                toggleDrawer();
+              }}
+            >
               {item.value}
             </Button>
           ))}
