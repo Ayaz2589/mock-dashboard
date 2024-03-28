@@ -4,10 +4,9 @@ import { useNavigation } from "../../../hooks";
 
 type Props = {
   title: string;
-  onNavButtonClick: () => void;
 };
 
-const Header = ({ title, onNavButtonClick }: Props) => {
+const Header = ({ title }: Props) => {
   const { toggleDrawer } = useNavigation();
 
   return (
