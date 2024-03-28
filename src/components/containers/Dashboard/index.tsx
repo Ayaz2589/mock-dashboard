@@ -1,14 +1,17 @@
 import { Outlet } from "react-router-dom";
-import { SplitScreen, Navigation, Container } from "../../";
+import { SplitScreen, Navigation, Container, NavigationDrawer } from "../../";
 
 const Dashboard = () => {
   return (
-    <SplitScreen dashboard>
-      <Navigation />
-      <Container>
-        <Outlet />
-      </Container>
-    </SplitScreen>
+    <div>
+      <NavigationDrawer />
+      <SplitScreen dashboard>
+        <Navigation />
+        <Container>
+          <Outlet />
+        </Container>
+      </SplitScreen>
+    </div>
   );
 };
 
