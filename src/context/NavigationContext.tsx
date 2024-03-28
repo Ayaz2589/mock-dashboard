@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback, ReactElement } from "react";
+import { createContext, useReducer, useCallback, ReactElement } from "react";
 
 type NavigationContextChildrenType = {
   children: ReactElement;
@@ -25,7 +25,10 @@ const initialNavigationState = {
   isDrawerOpen: false,
 };
 
-const navigationReducer = (state: NavigationStateType, action: Actions): NavigationStateType => {
+const navigationReducer = (
+  state: NavigationStateType,
+  action: Actions
+): NavigationStateType => {
   switch (action.type) {
     case ActionType.TOGGLE_DRAWER:
       return { ...state, isDrawerOpen: !state.isDrawerOpen };
@@ -34,26 +37,27 @@ const navigationReducer = (state: NavigationStateType, action: Actions): Navigat
   }
 };
 
-const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
+export const NavigationContext = createContext<NavigationContextType | undefined>(
+  undefined
+);
 
-export const useNavigation = () => {
-  const context = useContext(NavigationContext);
-  if (context === undefined) {
-    throw new Error("useNavigation must be used within a NavigationProvider");
-  }
-  return context;
-};
-
-export const NavigationProvider = ({ children }: NavigationContextChildrenType) => {
-  const [state, dispatch] = useReducer(navigationReducer, initialNavigationState);
+const NavigationProvider = ({ children }: NavigationContextChildrenType) => {
+  const [state, dispatch] = useReducer(
+    navigationReducer,
+    initialNavigationState
+  );
 
   const toggleDrawer = useCallback(() => {
     dispatch({ type: ActionType.TOGGLE_DRAWER });
   }, []);
 
   return (
-    <NavigationContext.Provider value={{ navigationState: state, toggleDrawer }}>
+    <NavigationContext.Provider
+      value={{ navigationState: state, toggleDrawer }}
+    >
       {children}
     </NavigationContext.Provider>
   );
 };
+
+export default NavigationProvider;

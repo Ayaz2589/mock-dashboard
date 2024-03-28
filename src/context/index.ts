@@ -1,1 +1,1 @@
-export { NavigationProvider } from "./NavigationContext"
+export { default as NavigationProvider } from "./NavigationContext"
