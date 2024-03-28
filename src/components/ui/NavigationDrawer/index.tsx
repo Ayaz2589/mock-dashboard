@@ -1,7 +1,7 @@
 import { Navigation } from "../..";
 import { useNavigation } from "../../../hooks";
 
-const DrawerButton = () => {
+const NavigationDrawer = () => {
   const { navigationState, toggleDrawer } = useNavigation();
 
   return (
@@ -36,4 +36,4 @@ const DrawerButton = () => {
   );
 };
 
-export default DrawerButton;
+export default NavigationDrawer;
