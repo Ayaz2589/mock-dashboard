@@ -1,8 +1,9 @@
-import { PersonalInformationForm } from "../../";
+import { PersonalInformationForm, Header } from "../../";
 
 const Settings = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-5">
+      <Header title="Settings" />
       <PersonalInformationForm />
     </div>
   );

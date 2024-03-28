@@ -16,7 +16,7 @@ import {
 const Metrics = () => {
   return (
     <div className="flex flex-col gap-5">
-      <Header title="Metrics" onNavButtonClick={() => {}}/>
+      <Header title="Metrics" />
       <LoginForm />
     </div>
   );
