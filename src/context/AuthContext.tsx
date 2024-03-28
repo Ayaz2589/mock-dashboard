@@ -1,6 +1,5 @@
 import {
   createContext,
-  useContext,
   useReducer,
   ReactElement,
   useCallback,
@@ -62,15 +61,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
-  return context;
-};
-
-export const AuthProvider = ({ children }: AuthContextChildrenType) => {
+const AuthProvider = ({ children }: AuthContextChildrenType) => {
   const [state, dispatch] = useReducer(authReducer, initialAuthState);
 
   const setEmail = useCallback((email: string) => {
@@ -97,3 +88,5 @@ export const AuthProvider = ({ children }: AuthContextChildrenType) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;
