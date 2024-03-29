@@ -1,11 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 
-type LoginProps = {
-  email: string;
-  password: string;
-};
-
 type User = {
   email: string;
   password: string;
@@ -16,7 +11,16 @@ type User = {
 const useAuthService = () => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = async ({ email, password }: LoginProps) => {
+  const login = async (
+    {
+      email,
+      password,
+    }: {
+      email: string;
+      password: string;
+    },
+    setError: (error: string) => void
+  ) => {
     try {
       const { data } = await axios.post(
         "https://app-backend-api-seven.vercel.app/api/auth/login",
@@ -25,7 +29,10 @@ const useAuthService = () => {
       const { accessToken, refreshToken } = data;
       setUser({ email, password, accessToken, refreshToken });
     } catch (error) {
+      setError("Invalid email or password");
+      setUser(null);
       console.log(error);
+      return;
     }
   };
 

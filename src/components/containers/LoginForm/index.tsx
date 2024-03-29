@@ -8,6 +8,7 @@ type Props = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   email: string;
   password: string;
+  error: string
 };
 
 const LoginForm = ({
@@ -16,6 +17,7 @@ const LoginForm = ({
   handleSubmit,
   email,
   password,
+  error
 }: Props) => {
   const [isDisabled, setDisabled] = useState(true);
 
@@ -48,7 +50,7 @@ const LoginForm = ({
             onChange={(e) => {
               handleEmailInput(e);
             }}
-            error={""}
+            error={error}
           />
           <Input
             type="password"
@@ -57,7 +59,7 @@ const LoginForm = ({
             onChange={(e) => {
               handlePasswordInput(e);
             }}
-            error={""}
+            error={error}
           />
           <button
             type="submit"
