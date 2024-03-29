@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Button } from "../..";
+import { Button, DropdownButton } from "../..";
 import { useOutsideClick } from "../../../hooks";
 
 export type Option = {
@@ -36,9 +36,9 @@ const Dropdown = ({ options, handleSelection, error }: Props) => {
 
   return (
     <div ref={dropdownRef} className="relative my-2">
-      <Button type="drop-down" onClick={toggle}>
+      <DropdownButton onClick={toggle}>
         {selectedOption ? selectedOption.label : "Please make a selection"}
-      </Button>
+      </DropdownButton>
       {open && (
         <div
           className="p-1 bg-gray-50 rounded-lg mt-1 absolute w-full border-solid border-2 shadow-sm z-10 max-h-60 overflow-auto"

@@ -18,6 +18,7 @@ export { default as SignupForm } from "./containers/SignupForm"
 
 export { default as ControlledFlow } from "./ui/ControlledFlow"
 export { default as Button } from "./ui/Button"
+export { default as DropdownButton } from "./ui/Button/DropdownButton"
 export { default as SplitScreen } from "./ui/SplitScreen"
 export { default as Input } from "./ui/Input"
 export { default as Dropdown } from "./ui/Dropdown"
