@@ -10,49 +10,63 @@ import {
 } from "../..";
 import { Link } from "react-router-dom";
 
-const SignUpForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+type Props = {
+  handleEmailInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleConfirmPasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (
+    e: React.FormEvent<HTMLFormElement>,
+    setIsLoading: (isLoading: boolean) => void
+  ) => void;
+  email: string;
+  password: string;
+  error: string;
+  confirmPassword: string;
+};
+
+const SignUpForm = ({
+  handleEmailInput,
+  handlePasswordInput,
+  handleConfirmPasswordInput,
+  handleSubmit,
+  email,
+  error,
+  password,
+  confirmPassword,
+}: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const isDisabled = !email || !password || !confirmPassword || isLoading;
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      console.log("User registered:", { email, password });
-      setIsLoading(false);
-    }, 1000);
+    handleSubmit(e, setIsLoading);
   };
 
   return (
     <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
       <CardHeader>Sign Up</CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <Input
             type="text"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailInput}
             error={error}
           />
           <Input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordInput}
             error={error}
           />
           <Input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleConfirmPasswordInput}
             error={error}
           />
           <div className="flex items-center w-full">
