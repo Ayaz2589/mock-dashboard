@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LoginForm } from "../..";
 import { useAuthService } from "../../../hooks";
+import { validateEmail, validatePassword } from "../../../utils";
 
 const Login = () => {
   const [email, setEmail] = useState("");

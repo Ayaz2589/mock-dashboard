@@ -5,6 +5,15 @@ export const validateEmail = (inputEmail: string) => {
   return emailPattern.test(inputEmail);
 };
 
+export const validatePassword = (password: string) => {
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSymbol = /[\W_]/.test(password); // \W matches any non-word character, and _ is considered a word character, so it's explicitly included
+  const isAtLeastSixCharsLong = password.length >= 6;
+
+  return hasUpperCase && hasNumber && hasSymbol && isAtLeastSixCharsLong;
+}
+
 export const validatePhoneNumber = (inputNumber: string) => {
   const phoneNumberPattern = /^(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/;
   return phoneNumberPattern.test(inputNumber);
