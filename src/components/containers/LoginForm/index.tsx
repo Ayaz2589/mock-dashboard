@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Card, CardHeader, CardContent, CardFooter } from "../..";
 
 type Props = {
@@ -16,6 +16,16 @@ const LoginForm = ({
   email,
   password,
 }: Props) => {
+  const [isDisabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (email && password) {
+      setDisabled(false);
+      return;
+    }
+    setDisabled(true);
+  }, [email, password]);
+
   return (
     <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
       <CardHeader>Login</CardHeader>
@@ -41,6 +51,7 @@ const LoginForm = ({
           />
           <button
             type="submit"
+            disabled={isDisabled}
             className={`mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
           >
             Submit

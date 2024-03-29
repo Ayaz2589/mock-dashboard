@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { LoginForm } from "../..";
+import { useAuthService } from "../../../hooks";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  const { login, user } = useAuthService();
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -14,7 +15,10 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    login({ email, password });
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-5 md:mx-0">
