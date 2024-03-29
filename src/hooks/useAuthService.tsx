@@ -8,17 +8,16 @@ type User = {
   refreshToken: string;
 };
 
+type LoginProps = {
+  email: string;
+  password: string;
+};
+
 const useAuthService = () => {
   const [user, setUser] = useState<User | null>(null);
 
   const login = async (
-    {
-      email,
-      password,
-    }: {
-      email: string;
-      password: string;
-    },
+    { email, password }: LoginProps,
     setError: (error: string) => void
   ) => {
     try {
