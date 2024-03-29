@@ -13,12 +13,11 @@ export { default as Avatar } from "./containers/Avatar"
 export { default as NotFound } from "./containers/NotFound"
 export { default as LoginForm } from "./containers/LoginForm"
 export { default as SignupForm } from "./containers/SignupForm"
-
-
-
 export { default as ControlledFlow } from "./ui/ControlledFlow"
 export { default as Button } from "./ui/Button"
 export { default as DropdownButton } from "./ui/Button/DropdownButton"
+export { default as DropdownItemButton } from "./ui/Button/DropdownItemButton"
+
 export { default as SplitScreen } from "./ui/SplitScreen"
 export { default as Input } from "./ui/Input"
 export { default as Dropdown } from "./ui/Dropdown"
