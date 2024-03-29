@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LoginForm } from "../..";
-import { useAuthService } from "../../../hooks";
+import { useAuthService, useAuth } from "../../../hooks";
 import { validateEmail, validatePassword } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login, user } = useAuthService();
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setUsertoApplication(user);
+  }, [user]);
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -28,7 +35,12 @@ const Login = () => {
     setPassword("");
   };
 
-  console.log(user);
+  const setUsertoApplication = (user: any) => {
+    if (user) {
+      setUser(user);
+      navigate("/dashboard/metrics");
+    }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-5 md:mx-0">
