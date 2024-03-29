@@ -24,15 +24,24 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    setIsLoading: (isLoading: boolean) => void
+  ) => {
     e.preventDefault();
-    if (!validateEmail(email) || !validatePassword(password)) {
-      setError("Invalid email or password");
-      return;
+    try {
+      if (!validateEmail(email) || !validatePassword(password)) {
+        setError("Invalid email or password");
+        return;
+      }
+      await login({ email, password }, setError);
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
-    login({ email, password }, setError);
-    setEmail("");
-    setPassword("");
   };
 
   const setUsertoApplication = (user: any) => {

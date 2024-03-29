@@ -1,47 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Input,
   Card,
   CardHeader,
   CardContent,
   CardFooter,
+  Button,
+  Spinner,
 } from "../..";
+import { Link } from "react-router-dom";
+
 const SignUpForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const isDisabled = !email || !password || !confirmPassword || isLoading;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      console.log("User registered:", { email, password });
+      setIsLoading(false);
+    }, 1000);
+  };
+
   return (
     <Card className="sm:w-full md:w-1/2 min-w-[30rem]">
       <CardHeader>Sign Up</CardHeader>
       <CardContent>
-        <form onSubmit={() => {}}>
+        <form onSubmit={handleSubmit}>
           <Input
             type="text"
             placeholder="Email"
-            value={""}
-            onChange={() => {}}
-            error={""}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={error}
           />
           <Input
             type="password"
             placeholder="Password"
-            value={""}
-            onChange={() => {}}
-            error={""}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            error={error}
           />
           <Input
             type="password"
             placeholder="Confirm Password"
-            value={""}
-            onChange={() => {}}
-            error={""}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            error={error}
           />
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Sign Up
-          </button>
+          <div className="flex items-center w-full">
+            <Button disabled={isDisabled} type="submit">
+              Sign Up
+            </Button>
+            {isLoading && (
+              <div className="mx-5">
+                <Spinner />
+              </div>
+            )}
+          </div>
         </form>
       </CardContent>
-      <CardFooter>Sign Up to Continue</CardFooter>
+      <CardFooter>
+        <Link to="/login">Already have an account? Log in</Link>
+      </CardFooter>
     </Card>
   );
 };

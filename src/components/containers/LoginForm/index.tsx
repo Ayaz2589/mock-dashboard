@@ -6,8 +6,8 @@ import {
   CardContent,
   CardFooter,
   Spinner,
+  Button,
 } from "../..";
-import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -41,15 +41,6 @@ const LoginForm = ({
     setDisabled(true);
   }, [email, password]);
 
-  const baseClasses = "text-white font-bold py-2 px-4 rounded";
-  const disabledClasses = "bg-slate-300";
-  const defaultClasses = "bg-blue-500 hover:bg-blue-700";
-
-  const buttonClassName = twMerge(
-    baseClasses,
-    isDisabled || isLoading ? disabledClasses : defaultClasses // Add isLoading to condition
-  );
-
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
     handleSubmit(e, setIsLoading);
@@ -75,13 +66,9 @@ const LoginForm = ({
             error={error}
           />
           <div className="flex items-center w-full">
-            <button
-              type="submit"
-              disabled={isDisabled || isLoading}
-              className={buttonClassName}
-            >
+            <Button type="submit" disabled={isDisabled || isLoading}>
               Submit
-            </button>
+            </Button>
             {isLoading && (
               <div className="mx-5">
                 <Spinner />
