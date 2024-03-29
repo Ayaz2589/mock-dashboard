@@ -17,6 +17,7 @@ export { default as ControlledFlow } from "./ui/ControlledFlow"
 export { default as Button } from "./ui/Button"
 export { default as DropdownButton } from "./ui/Button/DropdownButton"
 export { default as DropdownItemButton } from "./ui/Button/DropdownItemButton"
+export { default as NavigationItemButton } from "./ui/Button/NavigationItemButton"
 
 export { default as SplitScreen } from "./ui/SplitScreen"
 export { default as Input } from "./ui/Input"
