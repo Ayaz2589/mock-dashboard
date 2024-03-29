@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Spinner } from "../../";
+import { Spinner, NavigationItemButton } from "../../";
 import { useNavigation, useAuthService, useAuth } from "../../../hooks";
 
 const navItems = [
@@ -39,22 +39,21 @@ const Navigation = () => {
         </div>
         <div className="flex flex-col">
           {navItems.map((item) => (
-            <Button
-              type="navigation-item"
+            <NavigationItemButton
               onClick={() => {
                 navigate(item.link);
                 toggleDrawer();
               }}
             >
               {item.value}
-            </Button>
+            </NavigationItemButton>
           ))}
         </div>
       </div>
       <div className="flex items-center w-full">
-        <Button onClick={handleLogout} type="navigation-item">
+        <NavigationItemButton onClick={handleLogout}>
           Log Out
-        </Button>
+        </NavigationItemButton>
         {isLoading && (
           <div className="mx-5">
             <Spinner />
