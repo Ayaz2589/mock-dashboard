@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../";
+import { Button, Spinner } from "../../";
 import { useNavigation, useAuthService, useAuth } from "../../../hooks";
 
 const navItems = [
@@ -15,14 +16,18 @@ const Navigation = () => {
   const navigate = useNavigate();
   const { removeUser } = useAuth();
   const { logout } = useAuthService();
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
   const handleLogout = async () => {
+    setIsLoading(true);
     try {
       await logout();
       removeUser();
       navigate("/login");
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -46,9 +51,16 @@ const Navigation = () => {
           ))}
         </div>
       </div>
-      <Button onClick={handleLogout} type="navigation-item">
-        Log Out
-      </Button>
+      <div className="flex items-center w-full">
+        <Button onClick={handleLogout} type="navigation-item">
+          Log Out
+        </Button>
+        {isLoading && (
+          <div className="mx-5">
+            <Spinner />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
