@@ -23,6 +23,7 @@ const useAuthService = () => {
     try {
       const { data } = await axios.post(loginURL, { email, password });
       const { accessToken, refreshToken } = data;
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       setUser({ email, password, accessToken, refreshToken });
     } catch (error) {
       setError("Invalid email or password");
