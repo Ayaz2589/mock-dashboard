@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Card, CardHeader, CardContent, CardFooter } from "../..";
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
+import { Link } from "react-router-dom";
 
 type Props = {
   handleEmailInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -8,7 +9,7 @@ type Props = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   email: string;
   password: string;
-  error: string
+  error: string;
 };
 
 const LoginForm = ({
@@ -17,7 +18,7 @@ const LoginForm = ({
   handleSubmit,
   email,
   password,
-  error
+  error,
 }: Props) => {
   const [isDisabled, setDisabled] = useState(true);
 
@@ -70,7 +71,16 @@ const LoginForm = ({
           </button>
         </form>
       </CardContent>
-      <CardFooter>Login to Continue</CardFooter>
+      <CardFooter>
+        <div className="flex">
+          <div className="mr-5">
+            <Link to="/signup">Don't have an account?</Link>
+          </div>
+          <div className="mr-5">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
+        </div>
+      </CardFooter>
     </Card>
   );
 };
