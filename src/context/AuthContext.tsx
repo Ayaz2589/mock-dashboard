@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useReducer,
-  ReactElement,
-  useCallback,
-} from "react";
+import { createContext, useReducer, ReactElement, useCallback } from "react";
 
 type AuthContextChildrenType = {
   children: ReactElement;
@@ -12,43 +7,38 @@ type AuthContextChildrenType = {
 type AuthStateType = {
   email: string;
   password: string;
+  accessToken: string;
+  refreshToken: string;
 };
 
 type AuthContextType = {
   authState: AuthStateType;
-  setEmail: (email: string) => void;
-  setPassword: (password: string) => void;
-  login: () => void;
-  logout: () => void;
+  setUser: (user: AuthStateType) => void;
+  removeUser: () => void;
 };
 
 enum AuthActionType {
-  SET_EMAIL = "SET_EMAIL",
-  SET_PASSWORD = "SET_PASSWORD",
-  LOGIN = "LOGIN",
-  LOGOUT = "LOGOUT",
+  SET_USER = "SET_USER",
+  REMOVE_USER = "REMOVE_USER",
 }
 
 type Actions =
-  | { type: AuthActionType.SET_EMAIL; payload: string }
-  | { type: AuthActionType.SET_PASSWORD; payload: string }
-  | { type: AuthActionType.LOGIN }
-  | { type: AuthActionType.LOGOUT };
+  | { type: AuthActionType.SET_USER; payload: AuthStateType }
+  | { type: AuthActionType.REMOVE_USER };
 
 const initialAuthState: AuthStateType = {
   email: "",
   password: "",
+  accessToken: "",
+  refreshToken: "",
 };
 
 const authReducer = (state: AuthStateType, action: Actions): AuthStateType => {
   switch (action.type) {
-    case AuthActionType.SET_EMAIL:
-      return { ...state, email: action.payload };
-    case AuthActionType.SET_PASSWORD:
-      return { ...state, password: action.payload };
-    case AuthActionType.LOGIN:
-      return state;
-    case AuthActionType.LOGOUT:
+    case AuthActionType.SET_USER:
+      const { email, password, accessToken, refreshToken } = action.payload;
+      return { ...state, email, password, accessToken, refreshToken };
+    case AuthActionType.REMOVE_USER:
       return { ...initialAuthState };
     default:
       return state;
@@ -62,26 +52,16 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 const AuthProvider = ({ children }: AuthContextChildrenType) => {
   const [state, dispatch] = useReducer(authReducer, initialAuthState);
 
-  const setEmail = useCallback((email: string) => {
-    dispatch({ type: AuthActionType.SET_EMAIL, payload: email });
+  const setUser = useCallback((user: AuthStateType) => {
+    dispatch({ type: AuthActionType.SET_USER, payload: user });
   }, []);
 
-  const setPassword = useCallback((password: string) => {
-    dispatch({ type: AuthActionType.SET_PASSWORD, payload: password });
-  }, []);
-
-  const login = useCallback(() => {
-    dispatch({ type: AuthActionType.LOGIN });
-  }, []);
-
-  const logout = useCallback(() => {
-    dispatch({ type: AuthActionType.LOGOUT });
+  const removeUser = useCallback(() => {
+    dispatch({ type: AuthActionType.REMOVE_USER });
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{ authState: state, setEmail, setPassword, login, logout }}
-    >
+    <AuthContext.Provider value={{ authState: state, setUser, removeUser }}>
       {children}
     </AuthContext.Provider>
   );

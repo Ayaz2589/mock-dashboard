@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { LoginForm } from "../..";
 import { useAuthService, useAuth } from "../../../hooks";
 import { validateEmail, validatePassword } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login, user } = useAuthService();
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUsertoApplication(user);
@@ -34,6 +37,8 @@ const Login = () => {
 
   const setUsertoApplication = (user: any) => {
     if (user) {
+      setUser(user);
+      navigate("/dashboard/metrics");
     }
   };
 
