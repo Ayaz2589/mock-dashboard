@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios, { loginURL } from "../api";
+import axios, { loginURL, logoutURL } from "../api";
 
 type User = {
   email: string;
@@ -33,7 +33,18 @@ const useAuthService = () => {
     }
   };
 
-  return { login, user };
+  const logout = async () => {
+    try {
+      await axios.post(logoutURL);
+      delete axios.defaults.headers.common["Authorization"];
+      setUser(null);
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { login, logout, user };
 };
 
 export default useAuthService;
