@@ -1,13 +1,14 @@
 import React from "react";
 
 const defaultStyles = {
-  leftStyles: "flex-1 bg-slate-400",
-  rightStyles: "flex-1 bg-slate-500",
+  leftStyles: "flex-1 bg-slate-400 overflow-hidden",
+  rightStyles: "flex-1 bg-slate-500 overflow-y-auto",
 };
 
 const dashboardStyles = {
-  leftStyles: "hidden md:flex md:flex-1 min-w-[5rem] max-w-[15rem]",
-  rightStyles: "flex-1",
+  leftStyles:
+    "hidden md:flex md:flex-1 min-w-[5rem] max-w-[15rem] overflow-hidden",
+  rightStyles: "flex-1 overflow-y-auto",
 };
 
 type Props = {
