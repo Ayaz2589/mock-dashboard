@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios, { loginURL, logoutURL } from "../api";
+import { useAuth } from ".";
 
 type User = {
   email: string;
@@ -15,6 +16,7 @@ type LoginProps = {
 
 const useAuthService = () => {
   const [user, setUser] = useState<User | null>(null);
+  const { authState } = useAuth();
 
   const login = async (
     { email, password }: LoginProps,
@@ -29,16 +31,16 @@ const useAuthService = () => {
       setError("Invalid email or password");
       setUser(null);
       console.log(error);
-      return;
     }
   };
 
   const logout = async () => {
     try {
-      await axios.post(logoutURL);
+      await axios.delete(logoutURL, {
+        data: { refreshToken: authState.refreshToken },
+      });
       delete axios.defaults.headers.common["Authorization"];
       setUser(null);
-      return;
     } catch (error) {
       console.log(error);
     }

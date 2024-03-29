@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../";
-import { useNavigation } from "../../../hooks";
+import { useNavigation, useAuthService, useAuth } from "../../../hooks";
 
 const navItems = [
   { value: "Metrics", link: "/dashboard/metrics" },
@@ -13,6 +13,19 @@ const title = "Mock Dashboard";
 const Navigation = () => {
   const { toggleDrawer } = useNavigation();
   const navigate = useNavigate();
+  const { removeUser } = useAuth();
+  const { logout } = useAuthService();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      removeUser();
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full h-full bg-slate-600 justify-between flex flex-col">
       <div>
@@ -33,7 +46,7 @@ const Navigation = () => {
           ))}
         </div>
       </div>
-      <Button onClick={() => {}} type="navigation-item">
+      <Button onClick={handleLogout} type="navigation-item">
         Log Out
       </Button>
     </div>
