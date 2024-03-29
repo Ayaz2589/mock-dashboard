@@ -18,6 +18,12 @@ const Metrics = () => {
     <div className="flex flex-col gap-5">
       <Header title="Metrics" />
       <LoginForm />
+      <LoginForm />
+
+      <LoginForm />
+      <LoginForm />
+      <LoginForm />
+
     </div>
   );
 };

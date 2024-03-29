@@ -47,10 +47,8 @@ const authReducer = (state: AuthStateType, action: Actions): AuthStateType => {
     case AuthActionType.SET_PASSWORD:
       return { ...state, password: action.payload };
     case AuthActionType.LOGIN:
-      // Handle login logic or state update
-      return state; // Placeholder
+      return state;
     case AuthActionType.LOGOUT:
-      // Reset to initial state or handle logout logic
       return { ...initialAuthState };
     default:
       return state;
