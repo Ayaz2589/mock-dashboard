@@ -15,7 +15,7 @@ const Header = ({ title }: Props) => {
       <div className="md:hidden">
         <OpenNavDrawerButton toggleDrawer={toggleDrawer} />
       </div>
-      <h1 className="text-2xl font-semibold md:ml-3 flex-grow text-left ml-[1rem]">
+      <h1 className="text-2xl font-semibold md:ml-3 flex-grow text-left ml-[1rem] text-primary">
         {title}
       </h1>
     </div>

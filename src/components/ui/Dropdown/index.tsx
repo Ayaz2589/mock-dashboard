@@ -52,7 +52,7 @@ const Dropdown = ({ options, handleSelection, error }: Props) => {
         </div>
       )}
       <div className="min-h-[1.75rem]">
-        {error && <p className="p-1 text-sm text-red-500">{error}</p>}
+        {error && <p className="p-1 text-sm text-error">{error}</p>}
       </div>
     </div>
   );

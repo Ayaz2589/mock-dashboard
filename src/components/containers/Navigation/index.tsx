@@ -32,9 +32,9 @@ const Navigation = () => {
   };
 
   return (
-    <div className="w-full h-full bg-slate-600 justify-between flex flex-col">
+    <div className="w-full h-full bg-primary justify-between flex flex-col">
       <div>
-        <div className="text-center py-10 font-semibold text-xl text-slate-300">
+        <div className="text-center py-10 font-semibold text-xl text-primary-text-color">
           {title}
         </div>
         <div className="flex flex-col">

@@ -8,7 +8,7 @@ type Props = {
 const DropdownItemButton = ({ onClick, children }: Props) => {
   return (
     <div
-      className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-500 px-4 w-full text-sm rounded-lg p-2.5"
+      className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-primary-dropdown-text-color px-4 w-full text-sm rounded-lg p-2.5"
       onClick={onClick}
     >
       {children}
