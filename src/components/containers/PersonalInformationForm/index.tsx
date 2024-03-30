@@ -7,6 +7,7 @@ import {
   CardFooter,
   StatePicker,
   Avatar,
+  Button,
 } from "../..";
 
 const PersonalInformationForm = () => {
@@ -55,12 +56,7 @@ const PersonalInformationForm = () => {
           />
           <StatePicker handleStateSelection={() => {}} error="" />
 
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Submit
-          </button>
+          <Button type="submit">Submit</Button>
         </form>
       </CardContent>
       <CardFooter>Fill out the form</CardFooter>

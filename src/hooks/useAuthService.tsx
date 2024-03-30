@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios, { loginURL, logoutURL } from "../api";
+import axios, { loginURL, logoutURL, signupURL } from "../api";
 import { useAuth } from ".";
 
 type User = {
@@ -9,7 +9,7 @@ type User = {
   refreshToken: string;
 };
 
-type LoginProps = {
+type CredentialsProps = {
   email: string;
   password: string;
 };
@@ -19,7 +19,7 @@ const useAuthService = () => {
   const { authState } = useAuth();
 
   const login = async (
-    { email, password }: LoginProps,
+    { email, password }: CredentialsProps,
     setError: (error: string) => void
   ) => {
     try {
@@ -29,6 +29,21 @@ const useAuthService = () => {
       setUser({ email, password, accessToken, refreshToken });
     } catch (error) {
       setError("Invalid email or password");
+      setUser(null);
+      console.log(error);
+    }
+  };
+
+  const signup = async (
+    { email, password }: CredentialsProps,
+    setError: (error: string) => void
+  ) => {
+    try {
+      const { data } = await axios.post(signupURL, { email, password });
+      const { accessToken, refreshToken } = data;
+      setUser({ email, password, accessToken, refreshToken });
+    } catch (error) {
+      setError("Unable to create user. Please try again");
       setUser(null);
       console.log(error);
     }
@@ -46,7 +61,7 @@ const useAuthService = () => {
     }
   };
 
-  return { login, logout, user };
+  return { login, logout, signup, user };
 };
 
 export default useAuthService;
