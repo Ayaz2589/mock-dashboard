@@ -5,7 +5,7 @@ type Props = {
 };
 
 const CardHeader = ({ children }: Props) => (
-  <div className="w-full text-2xl mb-10 border-b-2 pb-1 text-gray-500">
+  <div className="w-full text-2xl mb-10 border-b-2 pb-1 text-primary">
     {children}
   </div>
 );

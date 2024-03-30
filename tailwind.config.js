@@ -3,12 +3,21 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      flexGrow: {
-        2: "2",
-        3: "3",
-        4: "4",
-        5: "5",
-        6: "6",
+      colors: {
+        primary: "#64748b",
+        "primary-hover": "#4b5563",
+        secondary: "#9ca3af",
+        error: "#dc2626",
+        "primary-text-color": "#cbd5e1",
+        "primary-dropdown-text-color": "#94a3b8"
+      },
+      outline: {
+        primary: "#64748b",
+      },
+    },
+    varients: {
+      extend: {
+        outline: ["focus"],
       },
     },
   },

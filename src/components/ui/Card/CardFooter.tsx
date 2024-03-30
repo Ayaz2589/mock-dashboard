@@ -5,7 +5,7 @@ type Props = {
 };
 
 const CardFooter = ({ children }: Props) => (
-  <div className="w-full mt-7 text-sm text-gray-500">{children}</div>
+  <div className="w-full mt-7 text-sm text-primary">{children}</div>
 );
 
 export default CardFooter

@@ -81,7 +81,7 @@ const SignUpForm = ({
             )}
           </div>
           <div className="min-h-[1.75rem] mt-5">
-            {error && <p className="p-1 text-sm text-red-500">{error.form}</p>}
+            {error && <p className="p-1 text-sm text-error">{error.form}</p>}
           </div>
         </form>
       </CardContent>

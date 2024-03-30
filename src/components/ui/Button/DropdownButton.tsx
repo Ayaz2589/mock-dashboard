@@ -26,7 +26,7 @@ const downArrow = (
 const DropdownButton = ({ children, onClick }: Props) => {
   return (
     <div
-      className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-gray-800 px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center border-2"
+      className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-primary px-4 w-full text-sm rounded-lg p-2.5 flex justify-between items-center border-2"
       onClick={onClick}
     >
       {children}
