@@ -27,20 +27,20 @@ const Signup = () => {
     setIsLoading: (isLoading: boolean) => void
   ) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-    if (!validateEmail(email) || !validatePassword(password)) {
-      setError("Invalid email or password");
-      return;
-    }
     try {
-      setIsLoading(true);
+      if (password !== confirmPassword) {
+        setError("Passwords do not match");
+        return;
+      }
+      if (!validateEmail(email) || !validatePassword(password)) {
+        setError("Invalid email or password");
+        return;
+      }
       console.log("SIGNOUT!");
       // await login({ email, password }, setError);
       setEmail("");
       setPassword("");
+      setConfirmPassword("");
     } catch (error) {
       console.error(error);
     } finally {
