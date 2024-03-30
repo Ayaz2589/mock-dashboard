@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios, { loginURL, logoutURL, signupURL } from "../api";
 import { useAuth } from ".";
 import { LoginErrorProps } from "../components/containers/Login";
+import { SignupErrorProps } from "../components/containers/Signup";
 
 type User = {
   email: string;
@@ -41,7 +42,7 @@ const useAuthService = () => {
 
   const signup = async (
     { email, password }: CredentialsProps,
-    setError: (error: LoginErrorProps) => void
+    setError: (error: SignupErrorProps) => void
   ) => {
     try {
       const { data } = await axios.post(signupURL, { email, password });
@@ -51,6 +52,7 @@ const useAuthService = () => {
       setError({
         email: "",
         password: "",
+        confirmPassword: "",
         form: "Unable to create user. Please try again",
       });
       setUser(null);

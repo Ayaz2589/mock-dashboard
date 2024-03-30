@@ -9,6 +9,7 @@ import {
   Spinner,
 } from "../..";
 import { Link } from "react-router-dom";
+import { SignupErrorProps } from "../Signup";
 
 type Props = {
   handleEmailInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,7 +21,7 @@ type Props = {
   ) => void;
   email: string;
   password: string;
-  error: string;
+  error: SignupErrorProps;
   confirmPassword: string;
 };
 
@@ -53,21 +54,21 @@ const SignUpForm = ({
             placeholder="Email"
             value={email}
             onChange={handleEmailInput}
-            error={error}
+            error={error.email}
           />
           <Input
             type="password"
             placeholder="Password"
             value={password}
             onChange={handlePasswordInput}
-            error={error}
+            error={error.password}
           />
           <Input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={handleConfirmPasswordInput}
-            error={error}
+            error={error.confirmPassword}
           />
           <div className="flex items-center w-full">
             <Button disabled={isDisabled} type="submit">
@@ -78,6 +79,9 @@ const SignUpForm = ({
                 <Spinner />
               </div>
             )}
+          </div>
+          <div className="min-h-[1.75rem] mt-5">
+            {error && <p className="p-1 text-sm text-red-500">{error.form}</p>}
           </div>
         </form>
       </CardContent>

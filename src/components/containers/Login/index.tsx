@@ -9,7 +9,11 @@ export type LoginErrorProps = { email: string; password: string; form: string };
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({ email: "", password: "", form: "" });
+  const [error, setError] = useState<LoginErrorProps>({
+    email: "",
+    password: "",
+    form: "",
+  });
   const { login, user } = useAuthService();
   const { setUser } = useAuth();
   const navigate = useNavigate();
