@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SignupForm } from "../..";
 import { validateEmail, validatePassword } from "../../../utils";
+import { useAuthService, useAuth } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const { signup, user } = useAuthService();
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setUsertoApplication(user);
+  }, [user]);
+
+  const setUsertoApplication = (user: any) => {
+    if (user) {
+      setUser(user);
+      navigate("/dashboard/metrics");
+    }
+  };
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -36,8 +52,7 @@ const Signup = () => {
         setError("Invalid email or password");
         return;
       }
-      console.log("SIGNOUT!");
-      // await login({ email, password }, setError);
+      await signup({ email, password }, setError);
       setEmail("");
       setPassword("");
       setConfirmPassword("");
