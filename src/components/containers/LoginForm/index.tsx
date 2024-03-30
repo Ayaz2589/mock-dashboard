@@ -10,6 +10,8 @@ import {
 } from "../..";
 import { Link } from "react-router-dom";
 
+import { LoginErrorProps } from "../Login";
+
 type Props = {
   handleEmailInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePasswordInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,7 +21,7 @@ type Props = {
   ) => void;
   email: string;
   password: string;
-  error: string;
+  error: LoginErrorProps;
 };
 
 const LoginForm = ({
@@ -56,14 +58,14 @@ const LoginForm = ({
             placeholder="Email"
             value={email}
             onChange={handleEmailInput}
-            error={error}
+            error={error.email}
           />
           <Input
             type="password"
             placeholder="Password"
             value={password}
             onChange={handlePasswordInput}
-            error={error}
+            error={error.password}
           />
           <div className="flex items-center w-full">
             <Button type="submit" disabled={isDisabled || isLoading}>
@@ -74,6 +76,9 @@ const LoginForm = ({
                 <Spinner />
               </div>
             )}
+          </div>
+          <div className="min-h-[1.75rem] mt-5">
+            {error && <p className="p-1 text-sm text-red-500">{error.form}</p>}
           </div>
         </form>
       </CardContent>

@@ -4,10 +4,12 @@ import { useAuthService, useAuth } from "../../../hooks";
 import { validateEmail, validatePassword } from "../../../utils";
 import { useNavigate } from "react-router-dom";
 
+export type LoginErrorProps = { email: string; password: string; form: string };
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState({ email: "", password: "", form: "" });
   const { login, user } = useAuthService();
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -31,7 +33,11 @@ const Login = () => {
     e.preventDefault();
     try {
       if (!validateEmail(email) || !validatePassword(password)) {
-        setError("Invalid email or password");
+        setError({
+          email: "Invalid email or password",
+          password: "Invalid email or password",
+          form: "",
+        });
         return;
       }
       await login({ email, password }, setError);
