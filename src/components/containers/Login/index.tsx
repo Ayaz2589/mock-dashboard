@@ -44,11 +44,14 @@ const Login = () => {
         });
         return;
       }
-      await login({ email, password }, setError);
+      await login({ email, password });
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.error(error);
+      setError({
+        ...error as LoginErrorProps,
+        form: "Unable to login with provided credentials",
+      });
     } finally {
       setIsLoading(false);
     }

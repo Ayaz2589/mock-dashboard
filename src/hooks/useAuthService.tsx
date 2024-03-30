@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios, { loginURL, logoutURL, signupURL } from "../api";
 import { useAuth } from ".";
-import { LoginErrorProps } from "../components/containers/Login";
 import { SignupErrorProps } from "../components/containers/Signup";
 
 type User = {
@@ -22,7 +21,6 @@ const useAuthService = () => {
 
   const login = async (
     { email, password }: CredentialsProps,
-    setError: (error: LoginErrorProps) => void
   ) => {
     try {
       const { data } = await axios.post(loginURL, { email, password });
@@ -30,13 +28,8 @@ const useAuthService = () => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       setUser({ email, password, accessToken, refreshToken });
     } catch (error) {
-      setError({
-        email: "",
-        password: "",
-        form: "Unable to login with provided credentials",
-      });
       setUser(null);
-      console.log(error);
+      throw new Error("Unable to login with provided credentials");
     }
   };
 
@@ -56,7 +49,8 @@ const useAuthService = () => {
         form: "Unable to create user. Please try again",
       });
       setUser(null);
-      console.log(error);
+      throw new Error("Unable to create user. Please try again");
+
     }
   };
 
@@ -68,7 +62,7 @@ const useAuthService = () => {
       delete axios.defaults.headers.common["Authorization"];
       setUser(null);
     } catch (error) {
-      console.log(error);
+      throw new Error("Error while logging out");
     }
   };
 
