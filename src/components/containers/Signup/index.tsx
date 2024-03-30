@@ -4,11 +4,23 @@ import { validateEmail, validatePassword } from "../../../utils";
 import { useAuthService, useAuth } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 
+export type SignupErrorProps = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  form: string;
+};
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState<SignupErrorProps>({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    form: "",
+  });
   const { signup, user } = useAuthService();
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -45,11 +57,21 @@ const Signup = () => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) {
-        setError("Passwords do not match");
+        setError({
+          email: "",
+          password: "Passwords do not match",
+          confirmPassword: "Passwords do not match",
+          form: "",
+        });
         return;
       }
       if (!validateEmail(email) || !validatePassword(password)) {
-        setError("Invalid email or password");
+        setError({
+          email: "Invalid email or password",
+          password: "Invalid email or password",
+          confirmPassword: "",
+          form: "",
+        });
         return;
       }
       await signup({ email, password }, setError);
