@@ -6,10 +6,10 @@ export default {
       colors: {
         primary: "#64748b",
         "primary-hover": "#4b5563",
-        secondary: "#9ca3af",
+        secondary: "#e2e8f0",
         error: "#dc2626",
         "primary-text-color": "#cbd5e1",
-        "primary-dropdown-text-color": "#94a3b8"
+        "primary-dropdown-text-color": "#94a3b8",
       },
       outline: {
         primary: "#64748b",

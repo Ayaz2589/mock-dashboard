@@ -40,6 +40,7 @@ const Navigation = () => {
         <div className="flex flex-col">
           {navItems.map((item) => (
             <NavigationItemButton
+              link={item.link}
               onClick={() => {
                 navigate(item.link);
                 toggleDrawer();

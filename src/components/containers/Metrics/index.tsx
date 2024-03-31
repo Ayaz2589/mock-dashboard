@@ -1,9 +1,13 @@
-import { Header } from "../../";
+import { Header, PersonalInformationForm } from "../../";
 
 const Metrics = () => {
   return (
     <div className="flex flex-col gap-5">
-      <Header title="Metrics" />
+      <div className="mt-[5rem]">
+        <Header title="Metrics" />
+      </div>
+      <PersonalInformationForm />
+      <PersonalInformationForm />
     </div>
   );
 };
