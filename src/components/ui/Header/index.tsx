@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { OpenNavDrawerButton } from "../..";
 import { useNavigation } from "../../../hooks";
 
@@ -10,8 +9,7 @@ const Header = ({ title }: Props) => {
   const { toggleDrawer } = useNavigation();
 
   return (
-    <div className="flex w-full items-center">
-      {/* The button will now only show on screens smaller than the md breakpoint */}
+    <div className="flex w-full items-center fixed top-0 pt-[2.3rem] pb-[1rem] bg-secondary z-10">
       <div className="md:hidden">
         <OpenNavDrawerButton toggleDrawer={toggleDrawer} />
       </div>
