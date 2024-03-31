@@ -38,7 +38,7 @@ const useAuthService = () => {
     } catch (error: any) {
       console.log(error);
       setUser(null);
-      throw new Error("Unable to create user. Please try again");
+      throw error;
     }
   };
 
@@ -50,7 +50,7 @@ const useAuthService = () => {
       delete axios.defaults.headers.common["Authorization"];
       setUser(null);
     } catch (error) {
-      throw new Error("Error while logging out");
+      throw error;
     }
   };
 

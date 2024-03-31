@@ -3,6 +3,7 @@ import { SignupForm } from "../..";
 import { validateEmail, validatePassword } from "../../../utils";
 import { useAuthService, useAuth } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
+import { handleAxiosError } from "../../../errors";
 
 export type SignupErrorProps = {
   email: string;
@@ -80,8 +81,8 @@ const Signup = () => {
       setConfirmPassword("");
     } catch (error) {
       setError({
-        ...error as SignupErrorProps,
-        form: "Unable to create user. Please try again",
+        ...(error as SignupErrorProps),
+        form: handleAxiosError(error),
       });
     } finally {
       setIsLoading(false);
