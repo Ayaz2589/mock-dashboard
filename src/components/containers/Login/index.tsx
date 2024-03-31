@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { LoginForm } from "../..";
 import { useAuthService, useAuth } from "../../../hooks";
 import { validateEmail, validatePassword } from "../../../utils";
+import { handleAxiosError } from "../../../errors";
 import { useNavigate } from "react-router-dom";
 
 export type LoginErrorProps = { email: string; password: string; form: string };
@@ -44,11 +45,14 @@ const Login = () => {
         });
         return;
       }
-      await login({ email, password }, setError);
+      await login({ email, password });
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.error(error);
+      setError({
+        ...(error as LoginErrorProps),
+        form: handleAxiosError(error),
+      });
     } finally {
       setIsLoading(false);
     }

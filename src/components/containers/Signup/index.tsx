@@ -3,6 +3,7 @@ import { SignupForm } from "../..";
 import { validateEmail, validatePassword } from "../../../utils";
 import { useAuthService, useAuth } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
+import { handleAxiosError } from "../../../errors";
 
 export type SignupErrorProps = {
   email: string;
@@ -74,12 +75,15 @@ const Signup = () => {
         });
         return;
       }
-      await signup({ email, password }, setError);
+      await signup({ email, password });
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      console.error(error);
+      setError({
+        ...(error as SignupErrorProps),
+        form: handleAxiosError(error),
+      });
     } finally {
       setIsLoading(false);
     }

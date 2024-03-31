@@ -9,7 +9,6 @@ import {
   Button,
 } from "../..";
 import { Link } from "react-router-dom";
-
 import { LoginErrorProps } from "../Login";
 
 type Props = {
@@ -33,7 +32,7 @@ const LoginForm = ({
   error,
 }: Props) => {
   const [isDisabled, setDisabled] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (email && password) {
