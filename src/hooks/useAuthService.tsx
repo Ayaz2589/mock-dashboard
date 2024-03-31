@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios, { loginURL, logoutURL, signupURL } from "../api";
 import { useAuth } from ".";
-import { SignupErrorProps } from "../components/containers/Signup";
 
 type User = {
   email: string;
@@ -19,9 +18,7 @@ const useAuthService = () => {
   const [user, setUser] = useState<User | null>(null);
   const { authState } = useAuth();
 
-  const login = async (
-    { email, password }: CredentialsProps,
-  ) => {
+  const login = async ({ email, password }: CredentialsProps) => {
     try {
       const { data } = await axios.post(loginURL, { email, password });
       const { accessToken, refreshToken } = data;
@@ -29,28 +26,19 @@ const useAuthService = () => {
       setUser({ email, password, accessToken, refreshToken });
     } catch (error) {
       setUser(null);
-      throw new Error("Unable to login with provided credentials");
+      throw error;
     }
   };
 
-  const signup = async (
-    { email, password }: CredentialsProps,
-    setError: (error: SignupErrorProps) => void
-  ) => {
+  const signup = async ({ email, password }: CredentialsProps) => {
     try {
       const { data } = await axios.post(signupURL, { email, password });
       const { accessToken, refreshToken } = data;
       setUser({ email, password, accessToken, refreshToken });
-    } catch (error) {
-      setError({
-        email: "",
-        password: "",
-        confirmPassword: "",
-        form: "Unable to create user. Please try again",
-      });
+    } catch (error: any) {
+      console.log(error);
       setUser(null);
       throw new Error("Unable to create user. Please try again");
-
     }
   };
 

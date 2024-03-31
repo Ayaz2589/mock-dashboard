@@ -74,12 +74,15 @@ const Signup = () => {
         });
         return;
       }
-      await signup({ email, password }, setError);
+      await signup({ email, password });
       setEmail("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      console.error(error);
+      setError({
+        ...error as SignupErrorProps,
+        form: "Unable to create user. Please try again",
+      });
     } finally {
       setIsLoading(false);
     }

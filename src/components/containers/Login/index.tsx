@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { LoginForm } from "../..";
 import { useAuthService, useAuth } from "../../../hooks";
 import { validateEmail, validatePassword } from "../../../utils";
+import { handleAxiosError } from "../../../errors";
 import { useNavigate } from "react-router-dom";
 
 export type LoginErrorProps = { email: string; password: string; form: string };
@@ -49,8 +50,8 @@ const Login = () => {
       setPassword("");
     } catch (error) {
       setError({
-        ...error as LoginErrorProps,
-        form: "Unable to login with provided credentials",
+        ...(error as LoginErrorProps),
+        form: handleAxiosError(error),
       });
     } finally {
       setIsLoading(false);
