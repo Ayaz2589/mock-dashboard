@@ -6,8 +6,6 @@ const Metrics = () => {
       <div className="mt-[5rem]">
         <Header title="Metrics" />
       </div>
-      <PersonalInformationForm />
-      <PersonalInformationForm />
     </div>
   );
 };
