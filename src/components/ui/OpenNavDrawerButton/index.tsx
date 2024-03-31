@@ -2,11 +2,12 @@ type Props = {
   toggleDrawer: () => void;
 };
 
-const OpenNavDrawerButton = ({ toggleDrawer }: Props) => {
+const HamburgerIconButton = ({ toggleDrawer }: Props) => {
   return (
     <button
       onClick={toggleDrawer}
-      className="flex items-center justify-center w-12 h-12 bg-blue-500 rounded-full text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50"
+      className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50"
+      aria-label="Open navigation menu"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -18,12 +19,12 @@ const OpenNavDrawerButton = ({ toggleDrawer }: Props) => {
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2"
-          d="M15 19l-7-7 7-7"
+          strokeWidth={2}
+          d="M4 6h16M4 12h16m-7 6h7"
         />
       </svg>
     </button>
   );
 };
 
-export default OpenNavDrawerButton;
+export default HamburgerIconButton;
